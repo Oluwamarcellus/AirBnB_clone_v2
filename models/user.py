@@ -4,14 +4,14 @@ User Class module
 """
 
 
-from models.base_model import BaseModel
+from models.base_model import Base, BaseModel
 
 
-class User(BaseModel):
+class User(BaseModel, Base):
     """
     User class that inherits from BaseModel
     """
-
+    __tablename__ = "users"
     email = ""
     password = ""
     first_name = ""
