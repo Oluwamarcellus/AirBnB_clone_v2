@@ -4,8 +4,9 @@ from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel
 from models.base_model import Base
-import models 
+import models
 import os
+
 
 class Amenity(BaseModel, Base):
     __tablename__ = 'amenities'
