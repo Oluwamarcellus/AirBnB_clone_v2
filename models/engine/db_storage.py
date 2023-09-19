@@ -53,12 +53,12 @@ class DBStorage:
 
         dic = {}
         if cls is None:
-            objects_list = self.__session.query(State).all()
+            objects_list = self.__session.query(User).all()
+            objects_list.extend(self.__session.query(State).all())
             objects_list.extend(self.__session.query(City).all())
-            objects_list.extend(self.__session.query(User).all())
+            objects_list.extend(self.__session.query(Amenity).all())
             objects_list.extend(self.__session.query(Place).all())
             objects_list.extend(self.__session.query(Review).all())
-            objects_list.extend(self.__session.query(Amenity).all())
         else:
             if type(cls) is str:
                 cls = eval(cls)
