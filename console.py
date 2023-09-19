@@ -47,26 +47,21 @@ class HBNBCommand(cmd.Cmd):
 
         try:  # parse line left to right
             pline = line[:]  # parsed line
-
             # isolate <class name>
             _cls = pline[:pline.find('.')]
-
             # isolate and validate <command>
             _cmd = pline[pline.find('.') + 1:pline.find('(')]
             if _cmd not in HBNBCommand.dot_cmds:
                 raise Exception
-
             # if parantheses contain arguments, parse them
             pline = pline[pline.find('(') + 1:pline.find(')')]
             if pline:
                 # partition args: (<id>, [<delim>], [<*args>])
                 pline = pline.partition(', ')  # pline convert to tuple
-
                 # isolate _id, stripping quotes
                 _id = pline[0].replace('\"', '')
                 # possible bug here:
                 # empty quotes register as empty _id when replaced
-
                 # if arguments exist beyond _id
                 pline = pline[2].strip()  # pline is now str
                 if pline:
