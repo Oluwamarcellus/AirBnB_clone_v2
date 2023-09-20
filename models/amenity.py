@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" City Module for HBNB project """
+""" AMENITY MODLE"""
 from sqlalchemy import Column, String
 from models.base_model import BaseModel, Base
 import os

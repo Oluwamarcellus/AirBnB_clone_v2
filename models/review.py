@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Review module for the HBNB project """
+""" REVIEW MODULE """
 from sqlalchemy import Column, String, ForeignKey
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
@@ -7,7 +7,7 @@ import os
 
 
 class Review(BaseModel, Base):
-    """Review class to store review information."""
+    """REVIEW INFO CLASS."""
     __tablename__ = 'reviews'
 
     place_id = Column(

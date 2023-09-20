@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
+""" STATE MODULE """
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from models.base_model import Base, BaseModel
@@ -8,7 +8,7 @@ import models
 
 
 class State(BaseModel, Base):
-    """ State class """
+    """ CLASS STATE """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
     cities = relationship('City', backref='state', cascade='all, delete')
@@ -16,8 +16,7 @@ class State(BaseModel, Base):
     @property
     def cities(self):
         """
-        returns the list of City instances with state_id equals
-        to the current State.id
+        LIST OF CITY
         """
 
         records = models.storage.all()
