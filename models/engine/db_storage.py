@@ -23,7 +23,7 @@ class DBStorage:
 
     def __init__(self):
         """
-        initializations
+        initializations.
         """
 
         dialect = 'mysql'

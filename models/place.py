@@ -26,7 +26,8 @@ place_amenity = Table(
         primary_key=True
     )
 )
-"""Represents the many to many relationship table
+"""
+Represents the many to many relationship table
 between Place and Amenity records.
 """
 
@@ -66,17 +67,17 @@ class Place(BaseModel, Base):
     ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else 0.0
     amenity_ids = []
     reviews = relationship(
-        'Review',
-        cascade="all, delete, delete-orphan",
-        backref='place'
-    ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else None
+            'Review',
+            cascade="all, delete, delete-orphan",
+            backref='place'
+            ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else None
     if os.getenv('HBNB_TYPE_STORAGE') == 'db':
         amenities = relationship(
             'Amenity',
             secondary=place_amenity,
             viewonly=False,
             backref='place_amenities'
-        )
+            )
     else:
         @property
         def amenities(self):
