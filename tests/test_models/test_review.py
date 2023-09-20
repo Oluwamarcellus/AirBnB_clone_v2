@@ -5,15 +5,16 @@ import os
 from models.city import City
 from tests.test_models.test_base_model import TestBasemodel
 
+
 class TestState(TestBasemodel):
     """Test model for state"""
-    
+
     def __init__(self, *args, **kwargs):
         """Initializes the test class."""
         super().__init__(*args, **kwargs)
         self.args = args
         self.kwargs = kwargs
-        
+
     def testPlaceId(self):
         """Test [place id]"""
         new = self.value()
@@ -21,7 +22,7 @@ class TestState(TestBasemodel):
             type(new.place_id),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )
-        
+
     def TestUserID(self):
         """Test user """
         new = self.value()
@@ -29,7 +30,7 @@ class TestState(TestBasemodel):
             type(new.user_id),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )
-        
+
     def TestText(self):
         """Test text"""
         new = self.value()
