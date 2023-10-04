@@ -17,24 +17,24 @@ class TestState(TestBasemodel):
 
     def testPlaceId(self):
         """Test [place id]"""
-        new = self.value()
+        n = self.value()
         self.assertEqual(
-            type(new.place_id),
+            type(n.place_id),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )
 
     def TestUserID(self):
         """Test user """
-        new = self.value()
+        n = self.value()
         self.assertEqual(
-            type(new.user_id),
+            type(n.user_id),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )
 
     def TestText(self):
         """Test text"""
-        new = self.value()
+        n = self.value()
         self.assertEqual(
-            type(new.text),
+            type(n.text),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )

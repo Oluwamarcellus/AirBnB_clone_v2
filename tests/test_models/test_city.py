@@ -7,25 +7,25 @@ from tests.test_models.test_base_model import TestBasemodel
 
 
 class TestCity(TestBasemodel):
-    """Represents the tests for the City model."""
+    """TESTS for the City model."""
     def __init__(self, *args, **kwargs):
-        """Initializes the test class."""
+        """INIT TEST CLASS."""
         super().__init__(*args, **kwargs)
         self.args = args
         self.kwargs = kwargs
 
     def TestStateId(self):
-        """ Test the state id"""
-        new = self.value()
+        """ id type testing"""
+        n = self.value()
         self.assertEqual(
-            type(new.state_id),
+            type(n.state_id),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )
 
     def TestName(self):
-        """Tests the type of name."""
-        new = self.value()
+        """name type testing."""
+        n = self.value()
         self.assertEqual(
-            type(new.name),
+            type(n.name),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )

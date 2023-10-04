@@ -10,15 +10,15 @@ class TestState(TestBasemodel):
     """Test model for state"""
 
     def __init__(self, *args, **kwargs):
-        """Initializes the test class."""
+        """TEST CALSS INITALIZATION."""
         super().__init__(*args, **kwargs)
         self.args = args
         self.kwargs = kwargs
 
     def TestName(self):
-        """Testing the name"""
-        new = self.value()
+        """TYPE OF NAME TESTING"""
+        n = self.value()
         self.assertEqual(
-            type(new.name),
+            type(n.name),
             str if os.getenv('HBNB_TYPE_STORAGE') != 'db' else type(None)
         )
