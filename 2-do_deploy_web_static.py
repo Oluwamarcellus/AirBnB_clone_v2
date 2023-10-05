@@ -6,7 +6,7 @@ Fabric script to deploy tgz archive
 from os.path import exists
 from fabric.api import put, run, env
 
-env.hosts = ['35.243.128.200', '3.239.120.96']
+env.hosts = ['100.25.191.86', '52.91.116.38']
 
 
 def do_deploy(archive_path):
