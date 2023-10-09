@@ -1,44 +1,34 @@
 #!/usr/bin/python3
-"""
-Fabric script to deploy tgz archive
-"""
+from fabric.api import put, run, local, env
+from os import path
 
-from os.path import exists
-from fabric.api import put, run, env
 
 env.hosts = ['100.25.191.86', '52.91.116.38']
 
 
 def do_deploy(archive_path):
-    """
-    copies archive file from local to my webservers
-    """
+    """Fabric script that distributes
+    an archive to your web server"""
 
-    if not exists(archive_path):
+    if not path.exists(archive_path):
         return False
     try:
-        file_name = archive_path.split("/")[-1].split(".")[0]
-        put(archive_path, "/tmp/")
-
-        run("mkdir -p /data/web_static/releases/{}".format(file_name))
-
-        run("tar -xzf /tmp/{}.tgz -C /data/web_static/releases/{}/"
-            .format(file_name, file_name))
-
-        run('rm -rf /tmp/{}.tgz'.format(file_name))
-
-        run(('mv /data/web_static/releases/{}/web_static/* ' +
-            '/data/web_static/releases/{}/')
-            .format(file_name, file_name))
-
-        run('rm -rf /data/web_static/releases/{}/web_static'
-            .format(file_name))
-
-        run('rm -rf /data/web_static/current')
-
-        run(('ln -s /data/web_static/releases/{}/' +
-            ' /data/web_static/current')
-            .format(file_name))
+        tgzfile = archive_path.split("/")[-1]
+        print(tgzfile)
+        filename = tgzfile.split(".")[0]
+        print(filename)
+        pathname = "/data/web_static/releases/" + filename
+        put(archive_path, '/tmp/')
+        run("mkdir -p /data/web_static/releases/{}/".format(filename))
+        run("tar -zxvf /tmp/{} -C /data/web_static/releases/{}/"
+            .format(tgzfile, filename))
+        run("rm /tmp/{}".format(tgzfile))
+        run("mv /data/web_static/releases/{}/web_static/*\
+            /data/web_static/releases/{}/".format(filename, filename))
+        run("rm -rf /data/web_static/releases/{}/web_static".format(filename))
+        run("rm -rf /data/web_static/current")
+        run("ln -s /data/web_static/releases/{}/ /data/web_static/current"
+            .format(filename))
         return True
-    except Exception:
+    except Exception as e:
         return False
