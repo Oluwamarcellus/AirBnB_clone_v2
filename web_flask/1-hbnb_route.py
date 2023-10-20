@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-0-hello_route module
+1-hbnb_route module
 """
 
 from flask import Flask
