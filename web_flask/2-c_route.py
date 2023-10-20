@@ -28,11 +28,10 @@ def hello_b():
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def c():
+def c(text):
     """
     Route that display “C ” followed by the value of the text variable
     """
-    text = {{ text }}
     text = text.replace("_", " ")
     return ("C {}".format(escape(text)))
 
